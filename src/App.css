@@ -1,0 +1,112 @@
+/* stranica - tamna pozadina sa suptilnim gradijentom */
+.page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(ellipse at 60% 20%, #1a2540 0%, #0F1526 70%);
+}
+
+/* staklena kartica */
+.card {
+  width: 360px;
+  padding: 40px 36px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.45), 0 1px 0 rgba(255,255,255,0.06) inset;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.title {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  color: #e2e8f0;
+  text-align: center;
+}
+
+/* input polja */
+.inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.num-input {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  padding: 12px 16px;
+  color: #f1f5f9;
+  font-size: 16px;
+  outline: none;
+  transition: border-color 0.2s, background 0.2s;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.num-input::placeholder {
+  color: rgba(255, 255, 255, 0.25);
+}
+
+.num-input:focus {
+  border-color: rgba(91, 141, 239, 0.6);
+  background: rgba(91, 141, 239, 0.07);
+}
+
+/* dugmad */
+.ops {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+.op-btn {
+  background: rgba(167, 139, 250, 0.1);
+  border: 1px solid rgba(167, 139, 250, 0.22);
+  border-radius: 10px;
+  color: #c4b5fd;
+  font-size: 20px;
+  padding: 14px 0;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s, transform 0.1s;
+}
+
+.op-btn:hover {
+  background: rgba(167, 139, 250, 0.2);
+  border-color: rgba(167, 139, 250, 0.48);
+}
+
+.op-btn:active {
+  transform: scale(0.95);
+}
+
+/* rezultat */
+.result-box {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  padding: 10px 16px;
+}
+
+.result {
+  font-size: 26px;
+  font-weight: 500;
+  color: #5B8DEF;
+  letter-spacing: -0.5px;
+}
+
+.error {
+  font-size: 14px;
+  color: rgba(248, 113, 113, 0.85);
+}
