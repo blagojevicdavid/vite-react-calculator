@@ -1,55 +1,16 @@
-import { useState } from 'react'
 import './App.css'
-
-type Op = '+' | '-' | '*' | '/'
+import { useCalculator, OPERATION_BUTTONS } from './useCalculator'
 
 function App() {
-  const [a, setA] = useState('')
-  const [b, setB] = useState('')
-  const [result, setResult] = useState<string | null>(null)
-  const [error, setError] = useState<string | null>(null)
+  const { a, setA, b, setB, result, error, calculate } = useCalculator()
 
-  // racunanje na osnovu odabrane operacije
-  const calculate = (op: Op) => {
-    const numA = parseFloat(a)
-    const numB = parseFloat(b)
-
-    if (isNaN(numA) || isNaN(numB)) {
-      setError('Unesi validne brojeve')
-      setResult(null)
-      return
-    }
-    if (op === '/' && numB === 0) {
-      setError('Deljenje nulom nije moguće')
-      setResult(null)
-      return
-    }
-
-    const results: Record<Op, number> = {
-      '+': numA + numB,
-      '-': numA - numB,
-      '*': numA * numB,
-      '/': numA / numB,
-    }
-
-    setError(null)
-    setResult(String(results[op]))
-  }
-
-  const buttons: { label: string; op: Op }[] = [
-    { label: '+', op: '+' },
-    { label: '−', op: '-' },
-    { label: '×', op: '*' },
-    { label: '÷', op: '/' },
-  ]
+  const buttons = OPERATION_BUTTONS
 
   return (
-    // glavni wrapper koji centrira karticu
     <div className="page">
       <div className="card">
         <h1 className="title">Kalkulator</h1>
 
-        {/* input polja */}
         <div className="inputs">
           <input
             className="num-input"
@@ -67,7 +28,6 @@ function App() {
           />
         </div>
 
-        {/* dugmad za operacije */}
         <div className="ops">
           {buttons.map(({ label, op }) => (
             <button key={op} className="op-btn" onClick={() => calculate(op)}>
@@ -76,7 +36,6 @@ function App() {
           ))}
         </div>
 
-        {/* prikaz rezultata ili greske */}
         <div className="result-box">
           {error && <span className="error">{error}</span>}
           {result !== null && !error && (
